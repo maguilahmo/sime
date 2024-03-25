@@ -1,0 +1,21 @@
+html {
+    font-size: 13px;
+ }
+
+ .nav-link_1 {
+    display: block;
+    padding: 0.5rem 1rem;
+    color: azure;
+    text-decoration: none;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out;
+ }
+
+ .nav-link_1:hover {
+   color: white;
+   font-weight: 700;
+ }
+
+ .bg-dark_1 {
+    background-color: #9B2F3E;
+ }
+ 

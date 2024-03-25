@@ -1,0 +1,37 @@
+<h2>Registro</h2>
+
+<div class="row">
+  <div class="card p-3">
+    <div class="d-flex justify-content-start">
+      <div class="ms-r me-5"><%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+        <%= f.error_notification %>
+
+        <div class="form-inputs">
+          <%= f.input :username %>
+          <%= f.input :email,
+                      required: true,
+                      autofocus: true,
+                      input_html: { autocomplete: "email" }%>
+          <%= f.input :password,
+                      required: true,
+                      hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
+                      input_html: { autocomplete: "new-password" } %>
+          <%= f.input :password_confirmation,
+                      required: true,
+                      input_html: { autocomplete: "new-password" } %>
+          <%= f.input :role, collection: User.roles.keys %>
+        </div>
+      <br>
+        <div class="form-actions">
+          <%= f.button :submit, "Sign up", class:"btn btn-primary" %>
+        </div>
+      <% end %>
+      <br>
+      <%= render "devise/shared/links" %>
+      </div>
+          <div class="ms-5">
+            <img src="<%= asset_path('Logo_SEC_.svg') %>" width="330" >
+          </div>
+      </div>
+  </div>
+

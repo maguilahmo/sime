@@ -1,0 +1,30 @@
+<h2>Inicio de Sesión</h2>
+<div class="row">
+    <div class="card p-3">
+      <div class="d-flex justify-content-start ">
+        <div class="ms-2 me-5">
+
+          <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+            <div class="form-inputs">
+              <%= f.input :email,
+                          required: false,
+                          autofocus: true,
+                          input_html: { autocomplete: "email" } %>
+              <%= f.input :password,
+                          required: false,
+                          input_html: { autocomplete: "current-password" } %>
+              <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+            </div>
+
+            <div class="form-actions">
+              <%= f.button :submit, "Log in", class:"btn btn-primary" %><p></p>
+            </div>
+          <% end %>
+          <%= render "devise/shared/links" %>
+    </div>
+          <div class="ms-5">
+            <img src="<%= asset_path( 'Logo_SEC_.svg' ) %> " width="330">
+          </div>
+  </div>
+</div>
+
