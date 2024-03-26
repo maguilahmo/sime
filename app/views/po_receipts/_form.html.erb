@@ -1,0 +1,19 @@
+
+<%= simple_form_for(@po_receipt) do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+  <div class="form-inputs">
+    <%= f.association :purchase_order, :label_method => lambda { |purchase_order| "#{purchase_order.id}" } %>
+    <%= f.association :suply, :label_method => lambda { |suply| "#{suply.descripcion}" } %>
+    <%= f.association :warehouse, :label_method => lambda { |warehouse| "#{warehouse.nombre}" } %>
+    <%= f.input :qty %>
+    <%= f.input :new_cost %>
+    <%= f.input :proveedor %>
+    <%= f.association :user, :label_method => lambda { |user| "#{user.username}" } %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, class:'btn btn-primary' %>
+  </div>
+<% end %>

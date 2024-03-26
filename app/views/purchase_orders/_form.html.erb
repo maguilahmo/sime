@@ -1,0 +1,33 @@
+
+<%= simple_form_for(@purchase_order) do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+  <div class="form-inputs">
+    <%= f.input :date %>
+    <%= f.association :budget_item, :label_method => lambda { |budget_item| "#{budget_item.partda}"} %>
+    <%= f.input :status, collection: PurchaseOrder.statuses.keys %>
+    <%= f.association :user, :label_method => lambda { |user| "#{user.username}"} %>
+    <%= f.input :spent %>
+    <h3>Insumos</h3>
+      <table>
+        <tbody>
+        <%= f.simple_fields_for :po_items do |i| %>
+          <tr>
+            <td><%= i.input :purchase_order_id, value: @purchase_order.id %></td>
+            <td><%= i.input :suply_id, collection: Suply.all, :label_method => lambda { |suply| "#{suply.descripcion}" } %></td>
+            <td><%= i.input :cost %></td>
+            <td><%= i.input :qty_ped %></td>
+            <td><%= i.input :status, collection: PoItem.statuses.keys %></td>
+          </tr>
+        </tbody>
+        <% end %>
+      </table>
+      
+
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, class:'btn btn-primary' %>
+  </div>
+<% end %>

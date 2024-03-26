@@ -1,0 +1,33 @@
+
+<%= simple_form_for(@school) do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+  <div class="form-inputs">
+    <%= f.input :cct %>
+    <%= f.input :nombre %>
+    <%= f.input :turno %>
+    <%= f.input :nivel %>
+    <%= f.input :subnivel %>
+    <%= f.input :detalle %>
+    <%= f.input :matricula %>
+    <%= f.input :docentes %>
+    <%= f.input :p_de_apoyo %>
+    <%= f.input :calle %>
+    <%= f.input :numero %>
+    <%= f.input :entre_calle %>
+    <%= f.input :y_calle %>
+    <%= f.input :colonia %>
+    <%= f.input :municipio %>
+    <%= f.input :localidad %>
+    <%= f.input :ambito %>
+    <%= f.input :zona_esc %>
+    <%= f.input :sector %>
+    <%= f.input :latitud %>
+    <%= f.input :longitud %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

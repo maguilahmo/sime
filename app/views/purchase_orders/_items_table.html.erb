@@ -1,0 +1,30 @@
+<table class="table table-stripped">
+    <thead class="table-dark" >
+        <th>Orden</th>
+        <th>Insumo</th>
+        <th>Costo</th>
+        <th>Pedidos</th>
+        <th>Recibidos</th>
+        <th>Proveedor</th>
+        <th>Status</th>
+        <th>Recibir</th>
+        
+    </thead>
+    <tbody>
+    <% @purchase_order.po_items.each do |pi| %>
+        <tr>
+            <td><%= pi.purchase_order_id %></td>
+            <td><%= pi.suply_id %></td>
+            <td><%= number_to_currency(pi.cost) %></td>
+            <td><%= pi.qty_ped %></td>
+            <td><%= pi.total %></td>
+            <td><%= pi.qty_recib %></td>
+            <td><%= pi.proveedor %></td>
+            <td><%= pi.status %></td>
+            <td><%= link_to "Recibir"  %></td>
+            </td>
+        </tr>
+    <% end %>
+    </tbody>
+            
+</table>

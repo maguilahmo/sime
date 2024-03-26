@@ -1,0 +1,61 @@
+<div class="row">
+  <div class="col-lg-12">
+    <div class="card p-3">
+      <div class="d-flex justify-content-between">
+        <div>
+            <%= link_to "Crear Escuela", new_school_path, class:'btn btn-primary' %>
+        </div>
+        <div>
+            <%== pagy_bootstrap_nav(@pagy) %>
+        </div>
+        <div>
+            <%= search_form_for @q do |es| %>
+                <%= es.label :cct %>
+                <%= es.search_field :cct_cont %>
+                <%= es.label :nombre %>
+                <%= es.search_field :nombre_cont %>
+                <%#= es.label :localidad %>
+                <%#= es.search_field :localidad_cont %>
+                <%= es.label :municipio %>
+                <%= es.search_field :municipio_cont %>
+                <%= es.submit class:'btn btn-info' %>
+            <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<p></p>
+
+<table class="table table-striped">
+    <thead class= "table-dark" >
+    <tr>
+        <th><%= sort_link(@q, :id, default_order: :asc, class:'text-white text-decoration-none') %></th>
+        <th><%= sort_link(@q, :cct, class:'text-white text-decoration-none') %></th>
+        <th><%= sort_link(@q, :nombre, class:'text-white text-decoration-none') %></th>
+        <th><%= sort_link(@q, :localidad, class:'text-white text-decoration-none') %></th>
+        <th><%= sort_link(@q, :municipio, class:'text-white text-decoration-none') %></th>
+        <th></th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @schools.each do |esc| %>
+        <tr>
+        <td><%= esc.id %></td>
+        <td><%= esc.cct %></td>
+        <td><%= esc.nombre %></td>
+        <td><%= esc.localidad %></td>
+        <td><%= esc.municipio %></td>
+        <td style="text-align: center"><%= link_to school_path(esc), title: 'Ver Detalle' do %>
+                <i class= "fs-6 bi-eye"></i>
+            <% end %>
+            </td>
+        <td style="text-align: center"><%= link_to edit_school_path(esc), title: 'Editar' do %>
+                <i class= "fs-6 bi-pencil"></i>
+            <% end %>
+        </td>
+        </tr>
+    <% end %>
+    </tbody>
+</table>

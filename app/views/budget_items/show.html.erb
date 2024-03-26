@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @budget_item %>
+
+<div>
+  <%= link_to "Editar partida", edit_budget_item_path(@budget_item), class:'btn btn-info' %> |
+  <%= link_to "Regresar", budget_items_path, class:'btn btn-info' %>
+<p></p>
+  <%= button_to "Borrar", @budget_item, method: :delete, class:'btn btn-danger' %>
+</div>

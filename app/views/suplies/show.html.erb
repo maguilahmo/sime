@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @suply %>
+
+<div>
+  <%= link_to "Edit this suply", edit_suply_path(@suply) %> |
+  <%= link_to "Back to suplies", suplies_path %>
+
+  <%= button_to "Destroy this suply", @suply, method: :delete %>
+</div>

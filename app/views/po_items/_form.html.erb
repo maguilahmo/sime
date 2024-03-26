@@ -1,0 +1,22 @@
+
+<%= simple_form_for(@po_item) do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+  <div class="form-inputs">
+    <%= f.association :purchase_order %>
+    <%= f.association :suply, :label_method => lambda { |suply| "#{suply.descripcion}" } %>
+    <%= f.input :qty_ped %>
+    <%= f.input :qty_recib %>
+    <%= f.input :proveedor %>
+    <% if @po_item.suply_id.present? %>
+      <% suply = Suply.find_by(id: @po_item.suply_id) %>
+          <%= f.input :cost, value: suply&.costo_u %>
+    <% end %>
+    <%= f.input :status, collection: PoItem.statuses.keys %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, class:'btn btn-primary' %>
+  </div>
+<% end %>

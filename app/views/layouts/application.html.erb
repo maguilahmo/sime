@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Sime</title>
+    <title>SimeNew</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -10,7 +10,106 @@
     <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
   </head>
 
-  <body>
-    <%= yield %>
+<body id="page-top">
+    <%= flash[:notice] %>
+    <%= flash[:alert] %>
+    <!-- Envoltorio de todo -->
+    <div class="container-fluid">
+    <div class="row flex-nowrap">
+        <div class="sidebar d-lg-block col-md-3 col-xl-2 px-sm-2 px-0 bg-dark_1">
+            <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
+                <a class="sidebar-brand d-flex justify-content-center" href="<%= root_path %>">
+                        <div class="sidebar-brand-icon mt-3 mb-10 text-center">
+                            <img src="<%= asset_path( 'Logo.648cc722.png' ) %>" width="245">
+                        </div>
+                </a>
+
+                <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
+                    <li class="nav-item text-center"><b>SIME</b><br />Sistema Integral de Mantenimiento Escolar</li>
+                    <li class="nav-item">
+                            <i class="fs-4 bi-speedometer2"></i> <span class=""><%= link_to "Dashboard", root_path, class:'ms-1 d-none d-sm-inline nav-link_1 align-middle px-0' %></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#submenu1" data-bs-toggle="collapse" class="nav-link_1 px-0 align-middle">
+                            <i class="fs-4 bi-list-columns-reverse"></i> <span class="ms-1 d-none d-sm-inline">Catálogos</span> </a>
+                        <ul class="collapse nav flex-column ms-1" id="submenu1" data-bs-parent="#menu">
+                            <li class="w-100">
+                                <span><%= link_to "Suministros", suplies_path, class:'d-none d-sm-inline nav-link_1 px-0' %></span>
+                            </li>
+                            <li class="w-100">
+                                <span><%= link_to "Escuelas", schools_path, class:'d-none d-sm-inline nav-link_1 px-0' %></span>
+                            </li>
+                            
+                            <li class="w-100">
+                                <span><%= link_to "Empleados", employees_path, class:'d-none d-sm-inline nav-link_1 px-0' %></span>
+                            </li>
+                            <li class="w-100">
+                                <span><%= link_to "Presupuesto", budget_items_path, class:'d-none d-sm-inline nav-link_1 px-0' %></span>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#" class="nav-link_1 px-0 align-middle">
+                            <i class="fs-4 bi-backpack2"></i> <span class="ms-1 d-none d-sm-inline">Otros</span></a>
+                    </li>
+                    <li>
+                        <a href="#submenu2" data-bs-toggle="collapse" class="nav-link_1 px-0 align-middle ">
+                            <i class="fs-4 bi-arrows-move"></i> <span class="ms-1 d-none d-sm-inline">Movimientos</span></a>
+                        <ul class="collapse nav flex-column ms-1" id="submenu2" data-bs-parent="#menu">
+                            <li class="w-100">
+                                <span><%= link_to "Órdenes de Compra", purchase_orders_path, class:'d-none d-sm-inline nav-link_1 px-0' %></span>
+                            </li>
+                            <li class="w-100">
+                                <span><%= link_to "Recibo", po_receipts_path, class:'d-none d-sm-inline nav-link_1 px-0' %></span>
+                            </li>
+                            <li class="w-100">
+                                <span><%= link_to "Transferencias", stock_transfers_path, class:'d-none d-sm-inline nav-link_1 px-0' %></span>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#submenu3" data-bs-toggle="collapse" class="nav-link_1 px-0 align-middle">
+                            <i class="fs-4 bi-grid"></i> <span class="ms-1 d-none d-sm-inline">Otras cosas</span> </a>
+                            <ul class="collapse nav flex-column ms-1" id="submenu3" data-bs-parent="#menu">
+                            <li class="w-100">
+                                <span><%= link_to "Existencias", stocks_path, class:"nav-link_1 px-0 d-none d-sm-inline" %></span>
+                            </li>
+                            <li>
+                                <span><%= link_to "Almacenes", warehouses_path, class:"nav-link_1 px-0 d-none d-sm-inline" %></span>
+                            </li>
+                            <li>
+                                <a href="#" class="nav-link_1 px-0"> <span class="d-none d-sm-inline">Otros 3</span></a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="/employees" class="nav-link_1 px-0 align-middle">
+                            <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline">Personas</span> </a>
+                    </li>
+                    <li>
+                        <%= render 'shared/session_manager' %>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="col py-3">
+          <div class="container">
+            <%= yield %>
+          </div>
+        </div>
+    </div>
+</div>
+  <!-- Footer -->
+   <footer class="fixed-bottom bg-dark_1">
+    <div class="container my-auto">
+      <div class="copyright text-center my-auto">
+        <span style="color: azure; font-size: 10px;">Copyright &copy; SEC© 2022-2027 Secretaría de Educación y Cultura del Estado de Sonora. Dirección General de Servicios Regionales, Chicago SN-C, Villas del Sol, 83240 Hermosillo, Son.</span><br />
+                    <span style="color: azure; font-size: 10px;">Desarrollado por la Subdirección de Control y Gestión encargada del Programa de Mantenimiento Escolar</span>
+      </div>
+    </div>
+   </footer>
+
   </body>
 </html>
+

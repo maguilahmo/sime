@@ -1,0 +1,17 @@
+
+<%= simple_form_for(@budget_item) do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+  <div class="form-inputs">
+    <%= f.input :partda %>
+    <%= f.input :descripcion %>
+    <%= f.input :monto_disp %>
+    <%= f.input :last_updated %>
+    <%= f.input :update_type, collection: BudgetItem.update_types.keys %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, class:'btn btn-primary' %>
+  </div>
+<% end %>

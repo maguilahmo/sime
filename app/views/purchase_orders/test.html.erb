@@ -1,0 +1,38 @@
+<div class="row">
+    <div class="d-flex justify-content-between">
+      <%= f.simple_fields_for :po_items do |i| %>
+        <div>
+          <%= i.input :purchase_order_id %>
+        </div>
+        <div>
+          <%= i.input :suply_id, collection: Suply.all, :label_method => lambda { |suply| "#{suply.descripcion}" } %>
+        </div>
+        <div>
+          <%= i.input :cost %>
+        </div>
+        <div>
+          <%= i.input :qty_ped %>
+        </div>
+        <div>
+          <%= i.input :qty_recib %>
+        </div>
+        <div>
+          <%= i.input :proveedor %>
+        </div>
+        <div>
+          <%= i.input :status, collection: PoItem.statuses.keys %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <table>
+    <tbody>
+    <td><%= i.input :purchase_order_id %></td>
+    <td><%= i.input :suply_id, collection: Suply.all, :label_method => lambda { |suply| "#{suply.descripcion}" } %></td>
+    <td><%= i.input :cost %></td>
+    <td><%= i.input :qty_ped %></td>
+    <td><%= i.input :qty_recib %></td>
+    <td><%= i.input :proveedor %></td>
+    <td><%= i.input :status, collection: PoItem.statuses.keys %></td>
+    </tbody>
+  </table>
