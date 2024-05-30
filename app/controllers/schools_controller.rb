@@ -6,8 +6,8 @@ class SchoolsController < ApplicationController
     # @schools = School.all
     @q = School.ransack(params[:q])
     @schools = @q.result(distinct: true)
-    @pagy, @schools = pagy(@q.result, items: 18 )
-  
+    @pagy, @schools = pagy(@q.result, items: 30 )
+
   end
 
   # GET /schools/1 or /schools/1.json

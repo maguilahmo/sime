@@ -1,0 +1,95 @@
+<% if current_user %>
+    <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
+        <a class="sidebar-brand d-flex justify-content-center" href="<%= root_path %>">
+                <div class="sidebar-brand-icon mt-3 mb-10 text-center">
+                    <img src="<%= asset_path( 'Logo.648cc722.png' ) %>" width="245">
+                </div>
+        </a>
+
+            <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
+                <li class="nav-item text-center"><b>SIME</b><br />Sistema Integral de Mantenimiento Escolar</li>
+                <li class="nav-item">
+                        <i class="fs-4 bi-speedometer2"></i> <span class=""><%= link_to "Dashboard", root_path, class:'ms-1 d-none d-sm-inline nav-link_1 align-middle px-0' %></span>
+                </li>
+                <li>
+                    <a href="#submenu1" data-bs-toggle="collapse" class="nav-link_1 px-0 align-middle">
+                        <i class="fs-4 bi-list-columns-reverse"></i> <span class="ms-1 d-none d-sm-inline">Catálogos</span> </a>
+                    <ul class="collapse nav flex-column ms-1" id="submenu1" data-bs-parent="#menu">
+                        <li class="w-100">
+                            <span><%= link_to "Suministros", suplies_path, class:'d-none d-sm-inline nav-link_1 px-0' %></span>
+                        </li>
+                        <li class="w-100">
+                            <span><%= link_to "Escuelas", schools_path, class:'d-none d-sm-inline nav-link_1 px-0' %></span>
+                        </li>
+                        
+                        <li class="w-100">
+                            <span><%= link_to "Empleados", employees_path, class:'d-none d-sm-inline nav-link_1 px-0' %></span>
+                        </li>
+                        <li class="w-100">
+                            <span><%= link_to "Presupuesto", budget_items_path, class:'d-none d-sm-inline nav-link_1 px-0' %></span>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" class="nav-link_1 px-0 align-middle">
+                        <i class="fs-4 bi-backpack2"></i> <span class="ms-1 d-none d-sm-inline">Otros</span></a>
+                </li>
+                <li>
+                    <a href="#submenu2" data-bs-toggle="collapse" class="nav-link_1 px-0 align-middle ">
+                        <i class="fs-4 bi-arrows-move"></i> <span class="ms-1 d-none d-sm-inline">Movimientos</span></a>
+                    <ul class="collapse nav flex-column ms-1" id="submenu2" data-bs-parent="#menu">
+                        <li class="w-100">
+                            <span><%= link_to "Órdenes de Compra", purchase_orders_path, class:'d-none d-sm-inline nav-link_1 px-0' %></span>
+                        </li>
+                        <li class="w-100">
+                            <span><%= link_to "Recibo", po_receipts_path, class:'d-none d-sm-inline nav-link_1 px-0' %></span>
+                        </li>
+                        <li class="w-100">
+                            <span><%= link_to "Transferencias", stock_transfers_path, class:'d-none d-sm-inline nav-link_1 px-0' %></span>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#submenu3" data-bs-toggle="collapse" class="nav-link_1 px-0 align-middle">
+                        <i class="fs-4 bi-grid"></i> <span class="ms-1 d-none d-sm-inline">Otras cosas</span> </a>
+                        <ul class="collapse nav flex-column ms-1" id="submenu3" data-bs-parent="#menu">
+                            <li class="w-100">
+                                <span><%= link_to "Existencias", stocks_path, class:"nav-link_1 px-0 d-none d-sm-inline" %></span>
+                            </li>
+                            <li>
+                                <span><%= link_to "Almacenes", warehouses_path, class:"nav-link_1 px-0 d-none d-sm-inline" %></span>
+                            </li>
+                            <li>
+                                <a href="#" class="nav-link_1 px-0"> <span class="d-none d-sm-inline">Otros 3</span></a>
+                            </li>
+                        </ul>
+            </li>
+            <li>
+                <a href="/employees" class="nav-link_1 px-0 align-middle">
+                    <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline">Personas</span> </a>
+            </li>
+        </ul>
+   
+        <hr/>
+            <div class="dropdown mb-5">
+                <%= render 'shared/session_manager' %>
+            </div>
+    </div>
+<% else %>
+    <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
+        <a class="sidebar-brand d-flex justify-content-center" href="<%= root_path %>">
+                <div class="sidebar-brand-icon mt-3 mb-10 text-center">
+                    <img src="<%= asset_path( 'Logo.648cc722.png' ) %>" width="245">
+                </div>
+        </a>
+
+            <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
+                <li class="nav-item text-center"><b>SIME</b><br />Sistema Integral de Mantenimiento Escolar</li>
+            </ul>
+   
+        <hr/>
+            <div class="dropdown mb-5">
+                <%= render 'shared/session_manager' %>
+            </div>
+    </div>
+<% end %>

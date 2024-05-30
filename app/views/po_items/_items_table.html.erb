@@ -1,6 +1,6 @@
 
-<table class="table table-stripped">
-    <thead class="table-dark" >
+<table class= "table_1 table-striped_1">
+    <thead class="table-dark_1">
         <th>ID</th>
         <th>Orden</th>
         <th>Insumo</th>
@@ -19,9 +19,9 @@
             <td><%= pi.id %></td>
             <td><%= pi.purchase_order_id %></td>
             <td><%= pi.suply.descripcion %></td>
-            <td><%= number_to_currency(pi.cost) %></td>
+            <td><%= number_to_currency(pi.orig_cost) %></td>
             <td><%= pi.qty_ped %></td>
-            <td><%= number_to_currency(pi.total) %></td>
+            <td><%= number_to_currency(pi.ped_total) %></td>
             <td><%= pi.qty_recib %></td>
             <td><%= pi.proveedor %></td>
             <td><%= pi.status %></td>

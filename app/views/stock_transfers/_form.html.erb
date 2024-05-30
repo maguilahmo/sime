@@ -17,7 +17,7 @@
       <%= f.collection_select :warehouse_in, Warehouse.all, :id, :nombre, prompt: true %>
       </div>
     </div>
-    <%= f.association :user, :label_method => lambda { |user| "#{user.username}" } %>
+    <%= f.association :user, value: current_user.id %>
   </div>
 
   <div class="form-actions">

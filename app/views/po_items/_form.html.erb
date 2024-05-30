@@ -11,8 +11,9 @@
     <%= f.input :proveedor %>
     <% if @po_item.suply_id.present? %>
       <% suply = Suply.find_by(id: @po_item.suply_id) %>
-          <%= f.input :cost, value: suply&.costo_u %>
+          <%= f.input :orig_cost, value: suply.costo_u %>
     <% end %>
+    <%= f.input :new_cost %>
     <%= f.input :status, collection: PoItem.statuses.keys %>
   </div>
 

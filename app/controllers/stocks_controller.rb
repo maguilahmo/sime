@@ -6,7 +6,7 @@ class StocksController < ApplicationController
     # @stocks = Stock.all
     @q = Stock.ransack(params[:q])
     @stocks = @q.result.includes(:suply, :warehouse)
-    @pagy, @stocks = pagy(@q.result, items: 18)
+    @pagy, @stocks = pagy(@q.result, items: 30)
   end
 
   # GET /stocks/1 or /stocks/1.json

@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :schools
   resources :po_items
   resources :purchase_orders
+  get 'purchase_orders/fullfill/:id', to: 'purchase_orders#fullfill', as: 'fullfill_purchase_order'
   resources :employees
   resources :stocks
   resources :warehouses

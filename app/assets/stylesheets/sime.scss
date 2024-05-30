@@ -18,4 +18,23 @@ html {
  .bg-dark_1 {
     background-color: #9B2F3E;
  }
- 
+ .table_1 {
+    padding-top: 30px;
+    padding-bottom: 30px;
+    caption-side: bottom;
+    border-collapse: collapse; 
+    width: 100%;
+    color: #383838;
+    vertical-align: top;
+    border-color: #9B2F3E;
+    caption-side: bottom;
+    border-collapse: collapse;
+ }
+ .table-striped_1 tbody tr:nth-of-type(odd) {
+    background-color: rgba(155, 47, 62, 0.15);
+ }
+
+ .table-dark_1 {
+    background-color: #9B2F3E;
+    color: white;
+ }

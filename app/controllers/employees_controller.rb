@@ -6,7 +6,7 @@ class EmployeesController < ApplicationController
     # @employees = Employee.all
     @q = Employee.ransack(params[:q])
     @employees = @q.result(distinct: true)
-    @pagy, @employee = pagy(@q.result, items: 18 )
+    @pagy, @employee = pagy(@q.result, items: 30 )
   end
 
   # GET /employees/1 or /employees/1.json

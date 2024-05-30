@@ -6,7 +6,7 @@ class SupliesController < ApplicationController
     # @suplies = Suply.all
     @q = Suply.ransack(params[:q])
     @suplies = @q.result(distinct: true)
-    @pagy, @suplies = pagy(@q.result, items: 18 )
+    @pagy, @suplies = pagy(@q.result, items: 30 )
   end
 
   # GET /suplies/1 or /suplies/1.json
@@ -68,6 +68,6 @@ class SupliesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def suply_params
-      params.require(:suply).permit(:pn, :descripcion, :presentacion, :budget_item_id, :costo_u)
+      params.require(:suply).permit(:pn, :descripcion, :presentacion, :budget_item_id, :costo_u, :prev_cost)
     end
 end

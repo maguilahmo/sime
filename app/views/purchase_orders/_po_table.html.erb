@@ -22,8 +22,8 @@
 </div>
 <p></p>
 
-<table class="table table-stripped">
-    <thead class="table-dark" >
+<table class= "table_1 table-striped_1">
+    <thead class="table-dark_1">
         <th>ID</th>
         <th>Partida</th>
         <th>Fecha</th>
@@ -32,6 +32,7 @@
         <th>Usuario</th>
         <th>Detalles</th>
         <th>Editar</th>
+        <th>Cerrar</th>
     </thead>
     <tbody>
     <% @purchase_orders.each do |po| %>
@@ -50,6 +51,9 @@
                 <i class="ps-6 bi-pencil"></i>
             <% end %>
             </td>
+            <td style="text-align:left;"><%= link_to fullfill_purchase_order_path(po), title: 'Cerrar' do %>
+                <i class="ps-6 bi-x-circle"></i>
+            <% end %>
         </tr>
     <% end %>
     </tbody>

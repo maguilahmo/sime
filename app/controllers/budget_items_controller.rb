@@ -6,7 +6,7 @@ class BudgetItemsController < ApplicationController
     # @budget_items = BudgetItem.all
     @q = BudgetItem.ransack(params[:q])
     @budget_items = @q.result(distinct: true)
-    @pagy, @budget_items = pagy(@q.result, items: 18 )
+    @pagy, @budget_items = pagy(@q.result, items: 30 )
   end
 
   # GET /budget_items/1 or /budget_items/1.json

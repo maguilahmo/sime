@@ -22,7 +22,8 @@ class PoItemsController < ApplicationController
   # POST /po_items or /po_items.json
   def create
     @po_item = PoItem.new(po_item_params)
-
+    @purchase_order = PurchaseOrder.find(@po_item.purchase_order_id)
+    @purchase_order.increment!(:calc_spent, @po_item.cost)
     respond_to do |format|
       if @po_item.save
         format.html { redirect_to po_item_url(@po_item), notice: "Po item was successfully created." }
@@ -65,6 +66,14 @@ class PoItemsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def po_item_params
-      params.require(:po_item).permit(:purchase_order_id, :suply_id, :qty_ped, :qty_recib, :proveedor, :cost, :status)
+      params.require(:po_item).permit(:purchase_order_id,
+                                      :suply_id,
+                                      :qty_ped,
+                                      :qty_recib,
+                                      :proveedor,
+                                      :orig_cost,
+                                      :status,
+                                      :new_cost
+                                      )
     end
 end

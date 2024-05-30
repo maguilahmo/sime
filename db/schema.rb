@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_03_26_013202) do
+ActiveRecord::Schema[7.1].define(version: 2024_04_01_145937) do
   create_table "budget_items", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.integer "partida"
     t.string "descripcion"
@@ -44,10 +44,11 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_26_013202) do
     t.integer "qty_ped"
     t.integer "qty_recib"
     t.string "proveedor"
-    t.decimal "cost", precision: 10
+    t.decimal "orig_cost", precision: 10
     t.integer "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.decimal "new_cost", precision: 10
     t.index ["purchase_order_id"], name: "index_po_items_on_purchase_order_id"
     t.index ["suply_id"], name: "index_po_items_on_suply_id"
   end
@@ -75,6 +76,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_26_013202) do
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.decimal "calc_spent", precision: 10
+    t.decimal "spent", precision: 10
     t.index ["budget_item_id"], name: "index_purchase_orders_on_budget_item_id"
     t.index ["user_id"], name: "index_purchase_orders_on_user_id"
   end
@@ -137,6 +140,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_26_013202) do
     t.decimal "costo_u", precision: 10
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.decimal "prev_cost", precision: 10
     t.index ["budget_item_id"], name: "index_suplies_on_budget_item_id"
   end
 

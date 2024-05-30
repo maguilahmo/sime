@@ -11,5 +11,5 @@ class PoReceipt < ApplicationRecord
   def self.ransackable_attributes(auth_object = nil)
     ["created_at", "id", "id_value", "new_cost", "proveedor", "purchase_order_id", "qty", "suply_id", "updated_at", "user_id", "warehouse_id"]
   end
-  
+
 end

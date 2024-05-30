@@ -25,17 +25,43 @@ class PoReceiptsController < ApplicationController
   # POST /po_receipts or /po_receipts.json
   def create
     @po_receipt = PoReceipt.new(po_receipt_params)
-
-    respond_to do |format|
-      if @po_receipt.save
-        format.html { redirect_to po_receipt_url(@po_receipt), notice: "Po receipt was successfully created." }
-        format.json { render :show, status: :created, location: @po_receipt }
+    @purchase_order = PurchaseOrder.find_by(id: @po_receipt.purchase_order_id)
+    @po_item = PoItem.find_by(suply_id: @po_receipt.suply_id, purchase_order_id: @po_receipt.purchase_order_id, status: 0)
+    @stock = Stock.find_by(suply_id: @po_receipt.suply_id, warehouse_id: @po_receipt.warehouse_id)
+    @suply = Suply.find_by(id: @po_receipt.suply_id)
+    if @po_receipt.save
+      @po_item.update(qty_recib: @po_receipt.qty)
+      @po_item.update(proveedor: @po_receipt.proveedor)
+      @stock.increment!(:qty, @po_receipt.qty)
+      @stock.update(update_type: 0)
+      @suply.update(costo_u: @po_receipt.new_cost)
+      if @po_item.qty_ped >= @po_receipt.qty
+        if @po_item.qty_ped == @po_receipt.qty
+          @po_item.update(status: 1)
+        end
+        respond_to do |format|
+          format.html { redirect_to po_receipts_url, notice: "Recibo de compra creado con éxito" }
+        end
       else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @po_receipt.errors, status: :unprocessable_entity }
+        flash[:alert] = "Nada que recibir"
+        redirect_to new_po_receipt_path
       end
     end
   end
+
+  # def create
+  #   @po_receipt = PoReceipt.new(po_receipt_params)
+
+  #   respond_to do |format|
+  #     if @po_receipt.save
+  #       format.html { redirect_to po_receipt_url(@po_receipt), notice: "Po receipt was successfully created." }
+  #       format.json { render :show, status: :created, location: @po_receipt }
+  #     else
+  #       format.html { render :new, status: :unprocessable_entity }
+  #       format.json { render json: @po_receipt.errors, status: :unprocessable_entity }
+  #     end
+  #   end
+  # end
 
   # PATCH/PUT /po_receipts/1 or /po_receipts/1.json
   def update

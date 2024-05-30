@@ -6,7 +6,7 @@ class WarehousesController < ApplicationController
     # @warehouses = Warehouse.all
     @q = Warehouse.ransack(params[:q])
     @warehouses = @q.result(distinct: true)
-    @pagy, @warehouses = pagy(@q.result, items: 18)
+    @pagy, @warehouses = pagy(@q.result, items: 30)
   end
 
   # GET /warehouses/1 or /warehouses/1.json
