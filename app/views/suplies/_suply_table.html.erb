@@ -43,7 +43,7 @@
             <td><%= su.pn %></td>
             <td><%= su.descripcion %></td>
             <td><%= su.budget_item.partida %></td>
-            <th><%= number_to_currency(su.costo_u) %></th>
+            <td><%= number_to_currency(su.costo_u) %></td>
             <td style="text-align: left"><%= link_to suply_path(su), title: 'Ver Detalle' do %>
                 <i class= "fs-6 bi-eye"></i>
             <% end %>

@@ -30,6 +30,8 @@
         <th>Cantidad</th>
         <th>Proveedor</th>
         <th>Usuario</th>
+        <th></th>
+        <th></th>
     </thead>
     <tbody>
     <% @po_receipts.each do |pr| %>
@@ -40,7 +42,13 @@
             <td><%= pr.qty %></td>
             <td><%= pr.proveedor %></td>
             <td><%= pr.user.username %></td>
-        </tr>
+            <td style="text-align: center"><%= link_to po_receipt_path(pr), title: 'Ver Detalle' do %>
+                <i class= "fs-6 bi-eye"></i>
+            <% end %>
+            </td>
+        <td style="text-align: center"><%= link_to edit_po_receipt_path(pr), title: 'Editar' do %>
+                <i class= "fs-6 bi-pencil"></i>
+            <% end %>
     <% end %>
     </tbody>
             

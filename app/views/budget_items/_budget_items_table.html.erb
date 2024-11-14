@@ -43,7 +43,7 @@
             <td><%= bi.id %></td>
             <td><%= bi.partida %></td>
             <td><%= bi.descripcion %></td>
-            <td><%= bi.monto_disp %></td>
+            <td><%= number_to_currency(bi.monto_disp) %></td>
             <td><%= bi.last_updated %></td>
             <td><%= bi.update_type %></td>
             <td style="text-align: left"><%= link_to budget_item_path(bi), title: 'Ver Detalle' do %>
